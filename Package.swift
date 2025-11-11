@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "md-extractor",
+    products: [
+        .executable(name: "md-extractor", targets: ["md-extractor"])
+    ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-argument-parser.git", from: "1.2.0"),
     ],
@@ -17,5 +20,12 @@ let package = Package(
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
             ]
         ),
+        .testTarget(
+            name: "ExtractionTests",
+            dependencies: [
+                "md-extractor"
+            ]
+        )
+
     ]
 )
