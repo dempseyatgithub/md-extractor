@@ -12,5 +12,5 @@ struct md_extractor: ParsableCommand {
         print("Hello, world!")
     }
     
-    static func logString() -> String { "logString" }
+    static func logString() -> String { "lagString" }
 }
