@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "md-extractor",
+    platforms: [.macOS(.v10_15)],
     products: [
         .executable(name: "md-extractor", targets: ["md-extractor"])
     ],
