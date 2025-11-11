@@ -11,4 +11,6 @@ struct md_extractor: ParsableCommand {
     mutating func run() throws {
         print("Hello, world!")
     }
+    
+    static func logString() -> String { "logString" }
 }
