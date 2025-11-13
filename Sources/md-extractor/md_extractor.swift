@@ -20,7 +20,7 @@ struct md_extractor: AsyncParsableCommand {
         for filename in filenames {
             if filename.hasPrefix("proposals") && filename.hasSuffix(".md") {
                 print(filename)
-                let fullURL = URL(filePath: filename, relativeTo: md_extractor.rootDirectory)
+                let fullURL = md_extractor.rootDirectory!.appending(path: filename)
                 print(fullURL)
                 let string = try String(contentsOf: fullURL)
                 print("String count: \(string.count)")
