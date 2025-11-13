@@ -9,18 +9,19 @@ import Foundation
 
 @main
 struct md_extractor: AsyncParsableCommand {
+    @Option var basePath: String
     @Argument var filenames: [String]
     
     mutating func run() async throws {
         
         
-        
-        print(); print("BASE PATH: \(String(describing: md_extractor.rootDirectory))")
+        let baseURL = URL(filePath: basePath)
+
+        print(); print("BASE PATH: \(baseURL)")
         print(); print("FILENAMES:")
         for filename in filenames {
             if filename.hasPrefix("proposals") && filename.hasSuffix(".md") {
-                print(filename)
-                let fullURL = md_extractor.rootDirectory!.appending(path: filename)
+                let fullURL = baseURL.appending(path: filename)
                 print(fullURL)
                 let string = try String(contentsOf: fullURL)
                 print("String count: \(string.count)")
