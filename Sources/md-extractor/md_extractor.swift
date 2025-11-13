@@ -48,7 +48,7 @@ struct md_extractor: AsyncParsableCommand {
     static let rootDirectory: URL? = {
         if let commandPath = CommandLine.arguments.first {
             let commandURL = URL(filePath: commandPath)
-            return commandURL.deletingLastPathComponent().deletingLastPathComponent()
+            return commandURL.deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent().deletingLastPathComponent()
         }
         return nil
     }()
