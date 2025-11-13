@@ -15,13 +15,14 @@ struct md_extractor: AsyncParsableCommand {
         
         
         
-        
+        print(); print("BASE PATH: \(String(describing: md_extractor.rootDirectory))")
         print(); print("FILENAMES:")
         for filename in filenames {
             if filename.hasPrefix("proposals") && filename.hasSuffix(".md") {
                 print(filename)
-                let relativeURL = URL(filePath: filename, relativeTo: md_extractor.processDirectory)
-                let string = try String(contentsOf: relativeURL)
+                let fullURL = URL(filePath: filename, relativeTo: md_extractor.rootDirectory)
+                print(fullURL)
+                let string = try String(contentsOf: fullURL)
                 print("String count: \(string.count)")
             }
         }
@@ -44,10 +45,10 @@ struct md_extractor: AsyncParsableCommand {
     
     static func logString() -> String { "logString" }
     
-    static let processDirectory: URL? = {
+    static let rootDirectory: URL? = {
         if let commandPath = CommandLine.arguments.first {
             let commandURL = URL(filePath: commandPath)
-            return commandURL.deletingLastPathComponent()
+            return commandURL.deletingLastPathComponent().deletingLastPathComponent()
         }
         return nil
     }()
