@@ -9,21 +9,25 @@ import Foundation
 
 @main
 struct md_extractor: AsyncParsableCommand {
-    @Argument var proposalPath: String
+    @Argument var filenames: [String]
     
     mutating func run() async throws {
-        let fileURL = URL(fileURLWithPath: proposalPath)
-        let proposalListing = try FileManager.default.contentsOfDirectory(at: fileURL, includingPropertiesForKeys: nil)
-        for url in proposalListing {
-            print(url.lastPathComponent)
+        for filename in filenames {
+            print(filename)
         }
+
+//        let fileURL = URL(fileURLWithPath: proposalPath)
+//        let proposalListing = try FileManager.default.contentsOfDirectory(at: fileURL, includingPropertiesForKeys: nil)
+//        for url in proposalListing {
+//            print(url.lastPathComponent)
+//        }
         
         print()
         print("--")
         print()
         
-        let previousResults = try await PreviousResultsFetcher.fetchPreviousResults()
-        print(previousResults)
+//        let previousResults = try await PreviousResultsFetcher.fetchPreviousResults()
+//        print(previousResults)
 
     }
     
